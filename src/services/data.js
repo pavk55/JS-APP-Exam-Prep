@@ -13,11 +13,11 @@ export async function getItems() {
 }
 
 export async function createCars(car) {
-    return await api.post(host + '/data/cars', car);
+    return await api.post(host + '/data/posts', car);
 }
 
-export async function getCarById(id) {
-    return await api.get(host + '/data/cars/' + id);
+export async function getItemById(id) {
+    return await api.get(host + '/data/posts/' + id);
 }
 
 export async function editCar(carId, car) {
@@ -30,8 +30,8 @@ export async function getCarProfile() {
     return await api.get(host + '/data/cars?where=_ownerId%3D%22' + userID + '%22&sortBy=_createdOn%20desc');
 }
 
-export async function deleteCar(id) {
-    return await api.del(host + '/data/cars/' + id);
+export async function deleteItem(id) {
+    return await api.del(host + '/data/posts/' + id);
 }
 
 // function createPointer(name, id) {
