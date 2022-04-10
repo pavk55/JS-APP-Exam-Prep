@@ -8,8 +8,8 @@ export const register = api.register;
 export const logout = api.logout;
 
 // Implement application-specific requests
-export async function getCars() {
-    return await api.get(host + '/data/cars?sortBy=_createdOn%20desc');
+export async function getItems() {
+    return await api.get(host + '/data/posts?sortBy=_createdOn%20desc');
 }
 
 export async function createCars(car) {

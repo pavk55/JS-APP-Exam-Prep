@@ -3,6 +3,7 @@ import { render } from '../node_modules/lit-html/lit-html.js';
 import { logout as apiLogout } from './services/data.js';
 import { loginPage } from "./pages/loginPage.js";
 import { registerPage } from "./pages/registerPage.js";
+import { dashboardPage } from "./pages/dashboardPage.js";
 
 // Elements
 // const navbarElement = document.getElementById("navigation");
@@ -22,7 +23,7 @@ page("/index.html", "/");
 // page('/', decorateContext, guestUsersOnly, homePage);
 page('/login', decorateContext, loginPage);
 page('/register', decorateContext, registerPage);
-// page('/catalog', decorateContext, catalogPage);
+page('/dashboard', decorateContext, dashboardPage);
 // page('/create', decorateContext,loggedUsersOnly, createPage);
 // page('/details/:id', decorateContext, detailsPage);
 // page('/edit/:id', decorateContext,loggedUsersOnly , editPage);
@@ -48,7 +49,7 @@ function setUserNavigation() {
     const username = sessionStorage.getItem('username');
 
     if (username !== null) {
-        document.querySelector('div.profile > a').textContent = `Welcome ${username}`;
+        // document.querySelector('div.profile > a').textContent = `Welcome ${username}`;
         document.querySelector('.profile').style.display = '';
         document.querySelector('.guest').style.display = 'none';
     } else {
@@ -59,7 +60,7 @@ function setUserNavigation() {
 async function logout() {
     await apiLogout();
     setUserNavigation();
-    page.redirect('/');
+    page.redirect('/dashboard');
 }
 // AuthGuard()
 function guestUsersOnly(ctx, next) {

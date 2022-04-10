@@ -1,29 +1,29 @@
 import { html } from "../../node_modules/lit-html/lit-html.js";
 import { register } from "../services/data.js";
 
-const registerTemplate = () => html`
-<section id="register-page" class="auth">
-            <form id="register">
-                <h1 class="title">Register</h1>
+const registerTemplate = (onSubmit) => html`
+    <section id="register-page" class="auth">
+        <form @submit=${onSubmit} id="register">
+            <h1 class="title">Register</h1>
 
-                <article class="input-group">
-                    <label for="register-email">Email: </label>
-                    <input type="email" id="register-email" name="email">
-                </article>
+            <article class="input-group">
+                <label for="register-email">Email: </label>
+                <input type="email" id="register-email" name="email">
+            </article>
 
-                <article class="input-group">
-                    <label for="register-password">Password: </label>
-                    <input type="password" id="register-password" name="password">
-                </article>
+            <article class="input-group">
+                <label for="register-password">Password: </label>
+                <input type="password" id="register-password" name="password">
+            </article>
 
-                <article class="input-group">
-                    <label for="repeat-password">Repeat Password: </label>
-                    <input type="password" id="repeat-password" name="repeatPassword">
-                </article>
+            <article class="input-group">
+                <label for="repeat-password">Repeat Password: </label>
+                <input type="password" id="repeat-password" name="repeatPassword">
+            </article>
 
-                <input type="submit" class="btn submit-btn" value="Register">
-            </form>
-        </section>
+            <input type="submit" class="btn submit-btn" value="Register">
+        </form>
+    </section>
 `;
 
 export async function registerPage(ctx) {
@@ -37,7 +37,7 @@ export async function registerPage(ctx) {
         const formData = new FormData(event.target);
         const email = formData.get('email');
         const password = formData.get('password');
-        const repeatPass = formData.get('repeatPass');
+        const repeatPass = formData.get('repeatPassword');
 
         let isNotUsername = email === '';
         let isNotPassword = password === '';
@@ -50,7 +50,12 @@ export async function registerPage(ctx) {
             return alert('not matching password!');
         }
 
-        const result =  await register(email, password)
+        const result = await register(email, password)
+
+        const token = sessionStorage.getItem('authToken');
+        if (token === null) {
+            return alert('unsuccessful registration')
+        }
 
         // refresh the nav with valid
         ctx.setUserNavigation();

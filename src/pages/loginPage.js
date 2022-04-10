@@ -22,6 +22,9 @@ const loginTemplate = (onSubmit) => html`
 `;
 
 export async function loginPage(ctx) {
+    // refresh the nav with valid
+    ctx.setUserNavigation();
+
     ctx.render(loginTemplate(onSubmit));
 
     // Event listener
@@ -45,9 +48,6 @@ export async function loginPage(ctx) {
         if (token === null) {
             window.alert('Cannot login. Try with correct username amd password.');
         }
-
-        // refresh the nav with valid
-        ctx.setUserNavigation();
 
         // redirect
         ctx.page.redirect('/dashboard');
