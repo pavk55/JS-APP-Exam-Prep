@@ -5,6 +5,7 @@ import { loginPage } from "./pages/loginPage.js";
 import { registerPage } from "./pages/registerPage.js";
 import { dashboardPage } from "./pages/dashboardPage.js";
 import { detailsPage } from "./pages/detailsPage.js";
+import { editPage } from "./pages/editPage.js";
 
 // Elements
 // const navbarElement = document.getElementById("navigation");
@@ -27,7 +28,7 @@ page('/register', decorateContext, registerPage);
 page('/dashboard', decorateContext, dashboardPage);
 // page('/create', decorateContext,loggedUsersOnly, createPage);
 page('/details/:id', decorateContext, detailsPage);
-// page('/edit/:id', decorateContext,loggedUsersOnly , editPage);
+page('/edit/:id', decorateContext,loggedUsersOnly , editPage);
 // page('/profile', decorateContext, profilePage);
 
 page.start();
