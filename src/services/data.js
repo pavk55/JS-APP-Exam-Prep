@@ -24,10 +24,10 @@ export async function editItem(itemId, item) {
     return await api.put(host + '/data/posts/' + itemId, item);
 }
 
-export async function getCarProfile() {
+export async function getItemProfile() {
     const userID = sessionStorage.getItem('userId');
     console.log(userID);
-    return await api.get(host + '/data/cars?where=_ownerId%3D%22' + userID + '%22&sortBy=_createdOn%20desc');
+    return await api.get(host + '/data/posts?where=_ownerId%3D%22'  + userID + '%22&sortBy=_createdOn%20desc');
 }
 
 export async function deleteItem(id) {
