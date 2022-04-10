@@ -34,6 +34,11 @@ export async function loginPage(ctx) {
         const password = formData.get('password');
         console.log(formData);
 
+        // if empty fields
+        if(!email || !password) {
+            return alert('please fill all empty fields')
+        }
+
         // login with the user/pass
         await login(email, password);
         const token = sessionStorage.getItem('authToken')
