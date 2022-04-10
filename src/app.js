@@ -1,6 +1,7 @@
 import page from '../node_modules/page/page.mjs';
 import { render } from '../node_modules/lit-html/lit-html.js';
 import { logout as apiLogout } from './services/data.js';
+import { loginPage } from "./pages/loginPage.js";
 
 // Elements
 // const navbarElement = document.getElementById("navigation");
@@ -18,7 +19,7 @@ setUserNavigation();
 page("/home", "/");
 page("/index.html", "/");
 // page('/', decorateContext, guestUsersOnly, homePage);
-// page('/login', decorateContext, loginPage);
+page('/login', decorateContext, loginPage);
 // page('/register', decorateContext, registerPage);
 // page('/catalog', decorateContext, catalogPage);
 // page('/create', decorateContext,loggedUsersOnly, createPage);
@@ -26,7 +27,7 @@ page("/index.html", "/");
 // page('/edit/:id', decorateContext,loggedUsersOnly , editPage);
 // page('/profile', decorateContext, profilePage);
 
-// page.start();
+page.start();
 
 
 /**

@@ -58,14 +58,14 @@ export async function del(url) {
     return await request(url, getOptions('delete'));
 }
 
-export async function login(username, password) {
+export async function login(email, password) {
     console.log(`${settings.host} + /users/login`);
 
-    const result = await post(settings.host + '/users/login', { username, password });
+    const result = await post(settings.host + '/users/login', { email, password });
     console.log('result');
     console.log(result);
 
-    sessionStorage.setItem('username', result.username);
+    sessionStorage.setItem('email', result.email);
     sessionStorage.setItem('authToken', result.accessToken);
     sessionStorage.setItem('userId', result._id);
     // setUserData(Object.assign({}, result, { username }));
@@ -76,7 +76,7 @@ export async function register(username, password) {
     const result = await post(settings.host + '/users/register', { username, password });
     console.log('result in api');
     console.log(result);
-    sessionStorage.setItem('username', result.username);
+    sessionStorage.setItem('email', result.email);
     sessionStorage.setItem('authToken', result.accessToken);
     sessionStorage.setItem('userId', result._id);
     // setUserData(Object.assign({}, result, { username }));
@@ -85,7 +85,7 @@ export async function register(username, password) {
 
 export async function logout() {
     const result = get(settings.host + '/users/logout', {});
-    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('email');
     sessionStorage.removeItem('authToken');
     sessionStorage.removeItem('userId');
     // clearUserData();
