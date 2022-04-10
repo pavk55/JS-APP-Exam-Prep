@@ -12,8 +12,8 @@ export async function getItems() {
     return await api.get(host + '/data/posts?sortBy=_createdOn%20desc');
 }
 
-export async function createCars(car) {
-    return await api.post(host + '/data/posts', car);
+export async function createItem(item) {
+    return await api.post(host + '/data/posts', item);
 }
 
 export async function getItemById(id) {

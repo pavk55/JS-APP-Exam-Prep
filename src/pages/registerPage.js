@@ -39,11 +39,7 @@ export async function registerPage(ctx) {
         const password = formData.get('password');
         const repeatPass = formData.get('repeatPassword');
 
-        let isNotUsername = email === '';
-        let isNotPassword = password === '';
-        let isNotRepeatPass = repeatPass === '';
-
-        if (isNotUsername || isNotPassword || isNotRepeatPass) {
+        if (!email || !password || !repeatPass) {
             return alert('all fields are required!');
         }
         if (password !== repeatPass) {

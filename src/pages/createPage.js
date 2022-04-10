@@ -1,8 +1,9 @@
 import { html } from "../../node_modules/lit-html/lit-html.js";
+import { createItem } from "../services/data.js";
 
-const createTemplate = () => html`
+const createTemplate = (onSubmit) => html`
     <section id="create-page" class="auth">
-        <form id="create">
+        <form @submit=${onSubmit} id="create">
             <h1 class="title">Create Post</h1>
 
             <article class="input-group">
@@ -35,3 +36,38 @@ const createTemplate = () => html`
     </section>
 
 `;
+
+export async function createPage(ctx) {
+    // refresh the nav with valid
+    ctx.setUserNavigation();
+
+    // display the page
+    ctx.render(createTemplate(onSubmit));
+
+    async function onSubmit(event) {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        const title = formData.get('title');
+        const description = formData.get('description');
+        const imageUrl = formData.get('imageUrl');
+        const address = formData.get('address');
+        const phone = formData.get('phone');
+
+
+        if (!title || !description || !imageUrl || !address || !phone) {
+            return alert('all field are required');
+        }
+
+        await createItem({
+            formData,
+            title,
+            description,
+            imageUrl,
+            address,
+            phone
+        })
+        ctx.page.redirect('/dashboard')
+    }
+}
+
+

@@ -42,7 +42,7 @@ describe('E2E tests', function () {
     await context.close();
   });
 
-  describe.only('Authentication [ 20 Points ]', () => {
+  describe('Authentication [ 20 Points ]', () => {
     it('Register does NOT work with empty fields [ 2.5 Points ]', async () => {
       const { post } = await handle(endpoints.register);
       const isCalled = post().isHandled;
@@ -151,7 +151,7 @@ describe('E2E tests', function () {
     });
   });
 
-  describe.only('Navigation bar [ 5 Points ]', () => {
+  describe('Navigation bar [ 5 Points ]', () => {
     it('Logged user should see correct navigation [ 2.5 Points ]', async () => {
       // Login user
       const data = mockData.users[0];
@@ -190,7 +190,7 @@ describe('E2E tests', function () {
     });
   });
 
-  describe.only('Dashboard Page [ 15 Points ]', () => {
+  describe('Dashboard Page [ 15 Points ]', () => {
     it('Show dashboard page [ 2.5 Points ]', async () => {
       await page.goto(host);
       await page.waitForTimeout(interval);
