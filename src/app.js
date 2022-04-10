@@ -46,10 +46,8 @@ function decorateContext(ctx, next) {
 
 // Display proper navigation
 function setUserNavigation() {
-    const username = sessionStorage.getItem('username');
-
-    if (username !== null) {
-        // document.querySelector('div.profile > a').textContent = `Welcome ${username}`;
+    const token = sessionStorage.getItem('authToken');
+    if (token !== null) {
         document.querySelector('.profile').style.display = '';
         document.querySelector('.guest').style.display = 'none';
     } else {

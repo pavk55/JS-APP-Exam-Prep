@@ -50,12 +50,12 @@ export async function registerPage(ctx) {
             return alert('not matching password!');
         }
 
-        const result = await register(email, password)
+        await register(email, password)
 
-        const token = sessionStorage.getItem('authToken');
-        if (token === null) {
-            return alert('unsuccessful registration')
-        }
+        // const token = sessionStorage.getItem('authToken');
+        // if (token === null) {
+        //     return alert('unsuccessful registration')
+        // }
 
         // refresh the nav with valid
         ctx.setUserNavigation();
