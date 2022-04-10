@@ -66,7 +66,7 @@ export async function createPage(ctx) {
             address,
             phone
         })
-        ctx.page.redirect('/dashboard')
+        ctx.page.redirect('/')
     }
 }
 

@@ -50,6 +50,6 @@ export async function loginPage(ctx) {
         }
 
         // redirect
-        ctx.page.redirect('/dashboard');
+        ctx.page.redirect('/');
     }
 }

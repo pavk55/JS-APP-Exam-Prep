@@ -40,11 +40,16 @@ export async function detailsPage(ctx) {
     const isOwner = userId === item._ownerId;
     const isLogged = userId !== null;
 
+    // console.log(itemId);
+    // console.log(item._id);
+    console.log(isOwner);
+    console.log(isLogged);
+
     async function onDelete() {
         const confirm = window.confirm('Are you sure?')
         if (confirm) {
             await deleteItem(itemId);
-            ctx.page.redirect('/dashboard')
+            ctx.page.redirect('/')
         }
     }
 

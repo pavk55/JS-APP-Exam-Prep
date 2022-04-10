@@ -26,7 +26,6 @@ export async function editItem(itemId, item) {
 
 export async function getItemProfile() {
     const userID = sessionStorage.getItem('userId');
-    console.log(userID);
     return await api.get(host + '/data/posts?where=_ownerId%3D%22'  + userID + '%22&sortBy=_createdOn%20desc');
 }
 

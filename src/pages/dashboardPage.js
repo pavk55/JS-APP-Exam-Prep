@@ -27,7 +27,7 @@ const itemTemplate = (item) => html`
     </div>
 `;
 
-export async function dashboardPage(ctx) {
+export async function homePage(ctx) {
     // get the data
     const allItems = await getItems();
 

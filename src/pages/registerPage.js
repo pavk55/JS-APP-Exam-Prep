@@ -57,6 +57,6 @@ export async function registerPage(ctx) {
         ctx.setUserNavigation();
 
         // redirect
-        ctx.page.redirect('/dashboard');
+        ctx.page.redirect('/');
     }
 }
